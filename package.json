@@ -1,0 +1,24 @@
+{
+  "name": "esp8266-project",
+  "version": "1.0.0",
+  "description": "ESP8266 Project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/holuwaseun/ESP8266-Project.git"
+  },
+  "keywords": [
+    "Final Year Project",
+    "ESP8266 Wi-Fi Module",
+    "PIC16F877A Controller"
+  ],
+  "author": "MInc",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/holuwaseun/ESP8266-Project/issues"
+  },
+  "homepage": "https://github.com/holuwaseun/ESP8266-Project#readme"
+}
