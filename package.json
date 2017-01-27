@@ -20,5 +20,30 @@
   "bugs": {
     "url": "https://github.com/holuwaseun/ESP8266-Project/issues"
   },
-  "homepage": "https://github.com/holuwaseun/ESP8266-Project#readme"
+  "homepage": "https://github.com/holuwaseun/ESP8266-Project#readme",
+  "dependencies": {
+    "angular": "^1.6.1",
+    "angular-animate": "^1.6.1",
+    "angular-chart.js": "^1.1.1",
+    "angular-datatables": "^0.6.0",
+    "angular-loading-bar": "^0.9.0",
+    "angular-moment": "^1.0.1",
+    "angular-ui-bootstrap": "^2.4.0",
+    "angular-ui-router": "^0.4.2",
+    "angular-velocity": "^0.3.1",
+    "animate.css": "^3.5.2",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.16.0",
+    "bootstrap": "^3.3.7",
+    "express": "^4.14.0",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.1.1",
+    "jsonwebtoken": "^7.2.1",
+    "mongodb": "^2.2.22",
+    "mongoose": "^4.7.8",
+    "morgan": "^1.7.0",
+    "simple-line-icons": "^2.4.1",
+    "socket.io": "^1.7.2",
+    "velocity-animate": "^1.4.0"
+  }
 }
