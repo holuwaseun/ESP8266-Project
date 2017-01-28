@@ -396,6 +396,7 @@ eeprom_write
 equals_double
 esp_init
 esp_responding
+esp_set_mode
 esp_wifi_connect
 exp
 expander_init
@@ -798,6 +799,7 @@ re2_bit
 read_write
 read_write_bit
 res032
+response
 rp0
 rp0_bit
 rp1

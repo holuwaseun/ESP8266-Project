@@ -22,11 +22,13 @@ char dev_online = 0;
 char wifi_connected = 0;
 char esp_responding = 0;
 char *token;
+char response;
 
 void lcd_write(char *msg, short int row, short int col);
 void lcd_clear();
 
 void esp_init();
+void esp_set_mode();
 void esp_wifi_connect();
 
 void uart_move_cursor();
@@ -36,7 +38,7 @@ void main()
  ADCON1 = 0x0F;
  INTCON = 0;
  UART1_Init(9600);
- Delay_ms(500);
+ Delay_ms(1000);
 
  TRISA = 0xFF;
  TRISB = 0x00;
@@ -47,40 +49,34 @@ void main()
  lcd_clear();
  lcd_write("DEVICE: MInc Dev", 1, 1);
  lcd_write("STATUS: Offline", 2, 1);
- Delay_ms(1500);
+ Delay_ms(2000);
  lcd_clear();
 
  do
  {
  if(esp_responding != 1)
  {
-#line 59 "C:/Users/HOLUWAS3UN/Documents/ESP8266-Project/firmware/esp8266-project.c"
+#line 61 "C:/Users/HOLUWAS3UN/Documents/ESP8266-Project/firmware/esp8266-project.c"
  lcd_write("Send AT Command.", 1, 1);
  esp_init();
- Delay_ms(1500);
+ Delay_ms(2000);
  }
 
  if(esp_responding != 0)
  {
-#line 69 "C:/Users/HOLUWAS3UN/Documents/ESP8266-Project/firmware/esp8266-project.c"
- if(!wifi_connected)
- {
-
-
- }
-#line 78 "C:/Users/HOLUWAS3UN/Documents/ESP8266-Project/firmware/esp8266-project.c"
+#line 72 "C:/Users/HOLUWAS3UN/Documents/ESP8266-Project/firmware/esp8266-project.c"
  if(!dev_online)
  {
 
 
  }
-#line 87 "C:/Users/HOLUWAS3UN/Documents/ESP8266-Project/firmware/esp8266-project.c"
+#line 81 "C:/Users/HOLUWAS3UN/Documents/ESP8266-Project/firmware/esp8266-project.c"
  if(PORTA.F0 == 1)
  {
 
 
  }
-#line 97 "C:/Users/HOLUWAS3UN/Documents/ESP8266-Project/firmware/esp8266-project.c"
+#line 91 "C:/Users/HOLUWAS3UN/Documents/ESP8266-Project/firmware/esp8266-project.c"
  if(PORTA.F3 == 1)
  {
 
@@ -107,11 +103,62 @@ void esp_init()
  UART1_Write_Text("AT");
  uart_move_cursor();
 
+ while(!UART1_Data_Ready());
+
+ UART1_Read_Text(response, "\0", 2);
+
+ lcd_clear();
+ if(strcmp("OK", response) == 0)
+ {
+ lcd_write("ESP Module OK", 1, 1);
  esp_responding = 1;
+ }
+ else
+ {
+ lcd_write("ESP Module Bad", 1, 1);
+ esp_responding = 0;
+ }
 }
 
-void ESP_WIFI_CONNECT()
-{}
+void esp_set_mode()
+{
+ UART1_Write_Text("AT+CWMODE=3");
+ uart_move_cursor();
+
+ while(!UART1_Data_Ready());
+
+ response = UART1_Read();
+
+ if(strcmp("OK", response) == 0)
+ {
+ lcd_write("ESP OPMODE: 3", 1, 1);
+ }
+ else
+ {
+ lcd_write("ESP OPMODE FAIL", 1, 1);
+ }
+}
+
+void esp_wifi_connect()
+{
+ UART1_Write_Text("AT+CWJAP=MInc Mobile,oluwaseun");
+ uart_move_cursor();
+
+ while(!UART1_Data_Ready());
+
+ response = UART1_Read();
+
+ if(strcmp("OK", response) == 0)
+ {
+ lcd_write("WiFi Connect OK", 1, 1);
+ wifi_connected = 1;
+ }
+ else
+ {
+ lcd_write("WiFi Connect Bad", 1, 1);
+ wifi_connected = 1;
+ }
+}
 
 void uart_move_cursor()
 {
