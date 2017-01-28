@@ -630,6 +630,7 @@ obf_bit
 obf_trise_bit
 oerr
 oerr_bit
+opmode_set
 option_reg
 ow_read
 ow_reset
