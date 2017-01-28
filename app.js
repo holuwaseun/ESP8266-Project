@@ -1,7 +1,6 @@
 const express = require("express")
 const bodyParser = require("body-parser")
 const morgan = require("morgan")
-const config = require("./config")
 const mongoose = require("mongoose")
 
 let app = express()
@@ -36,13 +35,13 @@ app.get("*", (request, response) => {
     response.sendFile(`${__dirname}/public/app/views/index.html`)
 })
 
-http.listen(config.port, (err) => {
+http.listen(228, (err) => {
     if(err)
     {
         console.log(err)
     }
     else
     {
-        console.log("Listening on port " + config.port)
+        console.log("Listening on port 228")
     }
 })
