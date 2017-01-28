@@ -59,7 +59,9 @@ PROJECT DIRECTORY STRUCTURE:
 
 -public {Houses AngularJS frontend files} -- Out of scope for now though
 
--firmware {Houses the C raw and compiled files}
+-firmware {Houses the C raw and compiled files}<br/>
+ |-simulations {Houses the Proteus simulations used}<br/>
+ |-images {Houses the images and snapshots of the project}
 
 Suggestions and comments are allowed.
 
