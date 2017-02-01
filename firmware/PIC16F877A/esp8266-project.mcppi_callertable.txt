@@ -26,12 +26,6 @@ main
 					Delay_5500us
 					Delay_50us
 	esp_init
-		uart_move_cursor
-			UART1_Write
-		UART1_Write_Text
-			UART1_Write
-		UART1_Data_Ready
-		UART1_Read
 		lcd_clear
 			Lcd_Cmd
 				Delay_1us
@@ -48,18 +42,20 @@ main
 						Delay_1us
 						Delay_5500us
 						Delay_50us
+		UART1_Write_Text
+			UART1_Write
+		uart_move_cursor
+			UART1_Write
+		UART1_Data_Ready
+		UART1_Read
 	esp_set_mode
-		uart_move_cursor
-			UART1_Write
-		UART1_Write_Text
-			UART1_Write
-		UART1_Data_Ready
-		UART1_Read
 		lcd_clear
 			Lcd_Cmd
 				Delay_1us
 				Delay_5500us
 				Delay_50us
+		uart_move_cursor
+			UART1_Write
 		lcd_write
 			Lcd_Out
 				Lcd_Cmd
@@ -71,18 +67,18 @@ main
 						Delay_1us
 						Delay_5500us
 						Delay_50us
+		UART1_Write_Text
+			UART1_Write
+		UART1_Data_Ready
+		UART1_Read
 	esp_wifi_connect
-		uart_move_cursor
-			UART1_Write
-		UART1_Write_Text
-			UART1_Write
-		UART1_Data_Ready
-		UART1_Read
 		lcd_clear
 			Lcd_Cmd
 				Delay_1us
 				Delay_5500us
 				Delay_50us
+		uart_move_cursor
+			UART1_Write
 		lcd_write
 			Lcd_Out
 				Lcd_Cmd
@@ -94,3 +90,30 @@ main
 						Delay_1us
 						Delay_5500us
 						Delay_50us
+		UART1_Write_Text
+			UART1_Write
+		UART1_Data_Ready
+		UART1_Read
+	api_connect
+		lcd_clear
+			Lcd_Cmd
+				Delay_1us
+				Delay_5500us
+				Delay_50us
+		uart_move_cursor
+			UART1_Write
+		lcd_write
+			Lcd_Out
+				Lcd_Cmd
+					Delay_1us
+					Delay_5500us
+					Delay_50us
+				Lcd_Chr_CP
+					Lcd_Cmd
+						Delay_1us
+						Delay_5500us
+						Delay_50us
+		UART1_Write_Text
+			UART1_Write
+		UART1_Data_Ready
+		UART1_Read

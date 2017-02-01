@@ -191,6 +191,7 @@ adon
 adon_bit
 adresh
 adresl
+api_connect
 asin
 atan
 atan2
@@ -364,7 +365,7 @@ delay_5ms
 delay_80us
 delay_8ms
 delay_cyc
-dev_online
+device_status
 div
 div_16x16_s
 div_16x16_s_l
@@ -395,7 +396,7 @@ eeprom_read
 eeprom_write
 equals_double
 esp_init
-esp_responding
+esp_ok
 esp_set_mode
 esp_wifi_connect
 exp
@@ -630,7 +631,7 @@ obf_bit
 obf_trise_bit
 oerr
 oerr_bit
-opmode_set
+opmode
 option_reg
 ow_read
 ow_reset
@@ -1346,7 +1347,7 @@ vdelay_ms
 w
 wcol
 wcol_bit
-wifi_connected
+wifi_status
 word2double
 wordtohex
 wordtostr
