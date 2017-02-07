@@ -9,8 +9,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define _XTAL_FREQ 20000000
-#define BAUDRATE 9600
+#define _XTAL_FREQ 22118400
+#define BAUDRATE 115200
 #define SET 1
 #define UNSET 0
 
@@ -49,6 +49,8 @@ void main()
 {
     unsigned char esp_ok = UNSET, op_mode = UNSET, wifi_connect = UNSET, device_status = UNSET;
     TRISD = 0x00;
+    RB7 = UNSET;
+    
     Lcd_Init();
     __delay_ms(100);
     UART_Init(BAUDRATE);
@@ -63,6 +65,8 @@ void main()
     
     while(SET)
     {
+        __delay_ms(500);
+        
         //Check ESP Device
         while(!esp_ok)
         {
@@ -71,7 +75,7 @@ void main()
             Lcd_Write_String("Send AT Command");
             __delay_ms(100);
             UART_Write_Text("AT");
-            UART_Write_Text("\n\r");
+            UART_Write(13);
             
             while(!UART_Data_Ready());
             
@@ -85,12 +89,15 @@ void main()
                 {
                     esp_ok = SET;
                     Lcd_Write_String("ESP Response OK");
-                    UART_Write_Text("\n\r");
+                    //UART_Write_Text("\n\r");
                 }
                 else
                 {
                     Lcd_Write_String("ESP Response Bad");
-                    UART_Write_Text("\n\r");
+                    __delay_ms(1000);
+                    Lcd_Write_String(ESP_Response);
+                    __delay_ms(500);
+                    //UART_Write_Text("\n\r");
                 }
                 __delay_ms(500);
             }
@@ -104,7 +111,7 @@ void main()
             Lcd_Write_String("Set Op. Mode");
             __delay_ms(100);
             UART_Write_Text("AT+CWMODE=3");
-            UART_Write_Text("\n\r");
+            //UART_Write_Text("\n\r");
 
             while(!UART_Data_Ready());
 
@@ -118,12 +125,12 @@ void main()
                 {
                     op_mode = SET;
                     Lcd_Write_String("Op Mode Set OK");
-                    UART_Write_Text("\n\r");
+                    //UART_Write_Text("\n\r");
                 }
                 else
                 {
                     Lcd_Write_String("Op Mode Set Fail");
-                    UART_Write_Text("\n\r");
+                    //UART_Write_Text("\n\r");
                 }
                 __delay_ms(500);
             }
@@ -137,7 +144,7 @@ void main()
             Lcd_Write_String("WiFi Connection");
             __delay_ms(100);
             UART_Write_Text("AT+CWJAP='MInc Mobile','oluwaseun'");
-            UART_Write_Text("\n\r");
+            //UART_Write_Text("\n\r");
 
             while(!UART_Data_Ready());
 
@@ -151,12 +158,12 @@ void main()
                 {
                     wifi_connect = SET;
                     Lcd_Write_String("WiFi Connect OK");
-                    UART_Write_Text("\n\r");
+                    //UART_Write_Text("\n\r");
                 }
                 else
                 {
                     Lcd_Write_String("WiFi Connect Fail");
-                    UART_Write_Text("\n\r");
+                    //UART_Write_Text("\n\r");
                 }
                 __delay_ms(500);
             }

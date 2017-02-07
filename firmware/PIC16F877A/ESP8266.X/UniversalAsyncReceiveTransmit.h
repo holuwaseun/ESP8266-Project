@@ -1,11 +1,15 @@
 char UART_Init(const long int baudrate)
 {
 	unsigned int x;
-	x = (_XTAL_FREQ - baudrate * 64) / (baudrate * 64);
-	if(x > 255)
+    
+	x = (_XTAL_FREQ - (baudrate * 64)) / (baudrate * 64);
+	
+    if(x > 255)
 	{
 		x = (_XTAL_FREQ - baudrate * 16) / (baudrate * 16);
 		BRGH = 1;
+        SPBRG = x;
+        return 1;
 	}
     
 	if( x < 256)
